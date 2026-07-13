@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Literata:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Literata", Georgia, serif;
+  --font-sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+
+  --color-eggshell-white: #F9F6F0;
+  --color-parchment: #F2EFE9;
+  --color-coriander-leaf: #478C5C;
+  --color-basil-dark: #2E5A3A;
+  --color-soft-charcoal: #2D3436;
+  --color-carrot-accent: #FF9F43;
+  --color-primary: #22683c;
+  --color-primary-container: #3d8253;
+  --color-on-primary-container: #f6fff4;
+  --color-surface-container-low: #eef5f7;
+  --color-on-surface-variant: #404941;
+}
+
+/* Custom visual styling helpers */
+.scrim-bottom {
+  background: linear-gradient(to top, rgba(22, 29, 31, 0.9) 0%, rgba(22, 29, 31, 0.4) 50%, transparent 100%);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Checked list item state animation */
+.checked-item {
+  text-decoration: line-through;
+  opacity: 0.5;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* General clean organic styling */
+body {
+  background-color: #F9F6F0;
+  color: #161d1f;
+  font-family: var(--font-sans);
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+/* Micro bounce for card hover actions */
+.hover-bounce {
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hover-bounce:hover {
+  transform: translateY(-4px);
+}

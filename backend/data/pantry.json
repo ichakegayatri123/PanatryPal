@@ -1,0 +1,52 @@
+{
+  "default-user-maria": [
+    {
+      "id": "1",
+      "name": "Spinach",
+      "category": "Vegetables",
+      "quantity": "2 cups",
+      "expiryDate": "2 days",
+      "isInFridge": true
+    },
+    {
+      "id": "2",
+      "name": "Tomato",
+      "category": "Vegetables",
+      "quantity": "1 cup",
+      "expiryDate": "4 days",
+      "isInFridge": true
+    },
+    {
+      "id": "3",
+      "name": "Chicken",
+      "category": "Proteins",
+      "quantity": "300g",
+      "expiryDate": "Use today",
+      "isInFridge": true
+    },
+    {
+      "id": "4",
+      "name": "Spaghetti",
+      "category": "Grains",
+      "quantity": "400g",
+      "expiryDate": "90 days",
+      "isInFridge": true
+    },
+    {
+      "id": "5",
+      "name": "Basil",
+      "category": "Vegetables",
+      "quantity": "1 cup",
+      "expiryDate": "3 days",
+      "isInFridge": true
+    },
+    {
+      "id": "6",
+      "name": "Parmesan Cheese",
+      "category": "Dairy",
+      "quantity": "100g",
+      "expiryDate": "25 days",
+      "isInFridge": true
+    }
+  ]
+}

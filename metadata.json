@@ -1,0 +1,6 @@
+{
+  "name": "PantryPal",
+  "description": "Reduce food waste while discovering delicious new recipes tailored to your pantry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
