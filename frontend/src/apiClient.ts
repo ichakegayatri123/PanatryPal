@@ -22,6 +22,10 @@ export interface ApiRequestOptions extends Omit<RequestInit, 'body'> {
   body?: any; // Automatically stringified if object
 }
 
+// Leave this unset in local development: Vite proxies /api to the local
+// Express server. Set it to the deployed backend origin in Vercel instead.
+const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+
 /**
  * Perform a fetch request to /api with automatic authentication headers
  */
@@ -48,8 +52,8 @@ export async function apiRequest<T = any>(path: string, options: ApiRequestOptio
     fetchOptions.body = typeof options.body === 'object' ? JSON.stringify(options.body) : options.body;
   }
 
-  // Prepend /api if not fully qualified URL
-  const url = path.startsWith('http') || path.startsWith('/') ? path : `/api/${path}`;
+  const apiPath = path.startsWith('http') || path.startsWith('/') ? path : `/api/${path}`;
+  const url = apiPath.startsWith('http') ? apiPath : `${API_BASE_URL}${apiPath}`;
 
   try {
     const response = await fetch(url, fetchOptions);

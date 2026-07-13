@@ -5,19 +5,11 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    // Plugins are installed at the workspace root while this config is run
-    // from frontend/, so Vite sees two otherwise-identical package types.
-    plugins: [react(), tailwindcss()] as any,
+    plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
-        // The animation library is resolved from the project root. Pin React
-        // and React DOM to that same installation so Vite cannot load two
-        // React runtimes (which causes the "Invalid hook call" blank screen).
-        'react': path.resolve(__dirname, '../node_modules/react'),
-        'react-dom': path.resolve(__dirname, '../node_modules/react-dom'),
       },
-      dedupe: ['react', 'react-dom'],
     },
     server: {
       proxy: {
