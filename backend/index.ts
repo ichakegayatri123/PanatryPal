@@ -22,10 +22,21 @@ const app = express();
 const PORT = Number(process.env.PORT || 3001);
 
 // CORS headers configuration
-const configuredOrigins = (process.env.APP_URL || 'http://localhost:3000').split(',').map(origin => origin.trim());
+const configuredOrigins = (process.env.APP_URL || 'http://localhost:3000')
+  .split(',')
+  .map(origin => origin.trim().replace(/\/$/, ''));
+
 app.use((req, res, next) => {
   const origin = req.header('Origin');
-  if (origin && configuredOrigins.includes(origin)) res.header('Access-Control-Allow-Origin', origin);
+  if (origin) {
+    const isAllowed = configuredOrigins.includes(origin) || 
+                      origin.endsWith('.vercel.app') || 
+                      origin.startsWith('http://localhost:') || 
+                      origin.startsWith('http://127.0.0.1:');
+    if (isAllowed) {
+      res.header('Access-Control-Allow-Origin', origin);
+    }
+  }
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Vary', 'Origin');
