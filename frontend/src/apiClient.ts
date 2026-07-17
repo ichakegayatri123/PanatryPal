@@ -30,6 +30,14 @@ const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
  * Perform a fetch request to /api with automatic authentication headers
  */
 export async function apiRequest<T = any>(path: string, options: ApiRequestOptions = {}): Promise<T> {
+  // Check if API URL is configured in deployed environment
+  if (typeof window !== 'undefined' && 
+      !window.location.hostname.includes('localhost') && 
+      !window.location.hostname.includes('127.0.0.1') && 
+      !import.meta.env.VITE_API_URL) {
+    throw new Error('Backend API URL (VITE_API_URL) is not configured in your Vercel settings.');
+  }
+
   const token = getAuthToken();
   
   const headers = new Headers(options.headers || {});
